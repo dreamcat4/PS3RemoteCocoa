@@ -173,10 +173,6 @@ static SPApplicationController			*SPSharedApplicationController;
 //	[[SPAppleRemote sharedRemote] setDelegate:self];
 	[[SPPS3Remote sharedRemote] setDelegate:self];
 //	[[SPWiiRemote sharedRemote] setDelegate:self];
-	
-  // it seems we cant connect to the bd remote in this way
-  // because the bd remote will normally be powered-down
-  // [[SPPS3Remote sharedRemote] connectDevice:nil];
   
 //	[self _update];
 }

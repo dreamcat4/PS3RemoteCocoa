@@ -143,7 +143,7 @@
 
 #pragma mark -
 
-// Lookup table for key mappings
+// Just a Lookup table for key mappings
 - (SPRemoteAction)actionForButton:(SPPS3RemoteButton)button inContext:(SPRemoteContext)context {
 	switch(button) {
 		case SPPS3RemoteButtonEject:
@@ -245,98 +245,6 @@
 	
 	return SPRemoteDoNothing;
 }
-
-  // it seems we cant connect to the bd remote in this way
-  // because the bd remote will normally be powered-down
-// - (void) connectDevice:(NSTimer *)timer
-// {
-//   // no success whilst BD remote is sleeping
-//   // static BluetoothDeviceAddress ps3_remote_addr = { { 0x00,0x24,0x33,0x4e,0xe8,0xc7 } };
-//   // 
-//   // _device = [IOBluetoothDevice withAddress:&ps3_remote_addr];
-//   // 
-//   // if ([_device openL2CAPChannelSync:&_controlChannel withPSM:17 delegate:self] != kIOReturnSuccess)
-//   //  NSLog(@"could not open L2CAP channel _controlChannel");
-//   // 
-//   // if ([_device openL2CAPChannelSync:&_interruptChannel withPSM:19 delegate:self] != kIOReturnSuccess)
-//   //    NSLog(@"could not open L2CAP channel _interruptChannel");
-// 
-//   // no success - it didnt return vv
-//   // if ([self isConnected] || _inquiry) return;
-//   // _inquiry = [[IOBluetoothDeviceInquiry alloc] initWithDelegate:self];
-//   // [_inquiry start];
-// 
-// // #ifdef DEBUG
-// //  NSLog(@"Searching for device...");
-// // #endif 
-// }
-
-// no success - it didnt trigger
-// - (void) deviceInquiryDeviceFound:(IOBluetoothDeviceInquiry*)sender device:(IOBluetoothDevice*)foundDevice
-// {
-//  if ([[foundDevice name] isEqualToString:@"BD Remote Control"]) 
-//  {
-// #ifdef DEBUG
-//    NSLog(@"Found Wii device, initializing...");
-// #endif
-// 
-//    // Found device, retain it in memory and end the search
-//    [self initializeDevice:foundDevice];
-//    [sender stop];
-//  }
-// }
-
-// - (void) deviceInquiryComplete:(IOBluetoothDeviceInquiry*)sender error:(IOReturn)error aborted:(BOOL)aborted
-// {
-// #ifdef DEBUG
-//  NSLog(@"Device inquiry completed.");
-// #endif
-// 
-//  [_inquiry release];
-//  _inquiry = nil;
-// }
-
-// no success - didnt trigger
-// - (bool) initializeDevice:(IOBluetoothDevice*)foundDevice
-// {
-//   // [self stopDevice];
-//  
-//  if ([foundDevice openConnection] != kIOReturnSuccess) 
-//  {
-//    NSLog(@"could not open the connection...");
-//    return NO;
-//  }
-//  
-//   if ([foundDevice performSDPQuery:nil] != kIOReturnSuccess)
-//   {
-//    NSLog(@"could not perform SDP Query...");
-//    return NO;
-//   }
-//  
-//   if ([foundDevice openL2CAPChannelSync:&_controlChannel withPSM:17 delegate:self] != kIOReturnSuccess)
-//   {
-//    NSLog(@"could not open L2CAP channel _controlChannel");
-//    //_controlChannel = nil;
-//    //[foundDevice closeConnection];
-//    return NO;
-//   }  
-//  
-//  if ([foundDevice openL2CAPChannelSync:&_interruptChannel withPSM:19 delegate:self] != kIOReturnSuccess){
-//    NSLog(@"could not open L2CAP channel _interruptChannel");
-//  //  _interruptChannel = nil;
-//     // [_interruptChannel closeChannel];
-//     // [foundDevice closeConnection];
-//    return NO;
-//  }
-//  
-//  // Retain the device in memory
-//  _device = [foundDevice retain];
-//   // [_controlChannel retain];
-//  [_interruptChannel  retain];
-//  
-//  return YES;
-// }
-
 
 #pragma mark -
 

@@ -105,9 +105,6 @@ typedef enum _SPPS3RemoteButton				SPPS3RemoteButton;
 
 - (SPRemoteAction)actionForButton:(SPPS3RemoteButton)button inContext:(SPRemoteContext)context;
 
-// - (bool) initializeDevice:(IOBluetoothDevice*)foundDevice;
-// - (void) connectDevice:(NSTimer *)timer;
-
 @end
 
 
