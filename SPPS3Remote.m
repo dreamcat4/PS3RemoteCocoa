@@ -258,22 +258,23 @@
 
 	NSLog(@"*** SPPS3Remote: Keypress Data received from the remote.");
 
-// (whilst in sleep mode) Im not sure how Sony handles this in the PS3.
-
 // Here we receive the keypress data over an opened L2CAP control channel.
 // We normally receive 2 data messages for each 1 full key press -
 // 1 message for key press "down" + 1 message for key press up / "release"
 
-// So therefore my suspicion is that the initial key press "down" event which sends the
-// interrupt (l2capChannelOpenComplete) NTF is used to wake up the control channel. Or to make
-// a brand new control channel. Im not sure how this happens for the BD Remote.
+// From sleep...
+// Around the time of the key press "down" event, we expect some communication on interrupt channel. 
+// l2capChannelOpenComplete notification is recieved on the host. Perhaps used to wake up the control
+// channel. Or to create a new control channel. Not sure exactly how this happens on either side
+// however bdremote-ng people seem to know.
 
-// Then by the time the control channel is awake, it may have missed out on the "key down" event,
-// but might be ready in enough time to receive the  user's "key released" event.
-// or at least the second full key press.
+// (whilst in sleep mode) Im not sure how Sony handles this in the PS3.
+// Perhaps theres a short delay (usually <1 second), then the keypress is actioned, so even the 
+// first "key down" event is captured. Im not sure which channel is used for that, or if the ps3
+// asks for it in retrospect afterwards, having first the remote connection re-established.
 
-// However I really have no idea if this is the case. Because for my situation the connection is 
-// never re-established. Instead, Mac OS "Pairing Request" window appears, the wake up goes wrong.
+// For my situation the l2capChannelData is not ever received at any time after a sleep.
+// Instead, Mac OS "Pairing Request" window appears, and the process fails.
 
 	[self _handleButton:buffer[5]];
 
