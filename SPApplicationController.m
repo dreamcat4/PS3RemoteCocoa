@@ -72,6 +72,7 @@ static SPApplicationController			*SPSharedApplicationController;
 
 	delegate = [[NSApp keyWindow] delegate];
 	
+	NSLog(@"*** SPPS3Remote: Key %2X pressed.", action);
 	switch(action) {
 		case SPRemoteDoNothing:
 			break;
